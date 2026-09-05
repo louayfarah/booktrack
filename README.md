@@ -119,3 +119,6 @@ If you have any questions, feature requests, or run into issues, feel free to re
 Happy reading! 📚
 
 
+
+
+<!-- Security scan triggered at 2026-09-05 08:07:30 -->
